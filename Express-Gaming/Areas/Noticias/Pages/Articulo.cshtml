@@ -1,0 +1,187 @@
+﻿@page
+@model Express_Gaming.Areas.Noticias.Pages.ArticuloModel
+@{
+    ViewData["Title"] = Html.DisplayFor(model => model.noticia.Titulo);
+
+}
+
+@{
+    string imgPath = "";
+    try
+    {
+        imgPath = $"~/img/posts/{(string.IsNullOrEmpty(Model.noticia.Img) ? "" : Model.noticia.Img)}";
+    }
+    catch (Exception e)
+    {
+
+    }
+}
+<div style="text-align: center;">
+    <div class="row">
+        <div class="col">
+            <div style="font-size: 19px;"><i class="fa fa-home"></i><span><a asp-controller="Home" asp-action="Index" style="color: black;">&nbsp; Inicio&nbsp;</a></span><span><i class="fa fa-angle-double-right"></i></span><span><a asp-controller="Noticias" asp-action="Index" style="color: black;">&nbsp; Noticias&nbsp;</a><span><i class="fa fa-angle-double-right"></i></span></span><span><a href="#" style="color: black;">&nbsp; Artículo @Html.DisplayFor(i => i.noticia.NoticiaId)</a></span></div>
+        </div>
+    </div>
+</div>
+<section class="article-clean">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+                <div class="intro">
+                    <h1 class="text-center">@Html.DisplayFor(model => model.noticia.Titulo)</h1>
+                    <p class="text-center"><span class="by">Por: </span> <a href="#">@Html.DisplayFor(model => model.noticia.Usuario.UserName)</a><span class="date">@Html.DisplayFor(model => model.noticia.FechaPub) </span></p><img class="img-fluid" src="@imgPath" asp-append-version="true">
+                </div>
+                <div class="text">
+                    @Html.Raw(Model.noticia.Contenido)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+@if (Model.noticia.Comentarios.Any())
+{
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="font-monospace">Sección de comentarios</h3>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    @foreach (var item in Model.noticia.Comentarios)
+                    {
+                        @if (item.NoticiasId == item.Noticia.NoticiaId)
+                        {
+                            <li class="list-group-item">
+                                <div class="d-flex media">
+                                    <div></div>
+                                    <div class="media-body">
+                                        <div class="d-flex media" style="overflow:visible;">
+                                            @if (item.Usuario.Id == ViewBag.UID || HttpContext.User.IsInRole("administrador") == true)
+                                            {
+                                                <div class="float-sm-right">
+                                                   <p> <a asp-page="./EliminarComentario" asp-route-ConoID="@item.CoNoId" asp-route-NoticiaID="@item.Noticia.NoticiaId"><i class="fa fa-trash"></i></a> - </p>
+                                                </div>
+                                            }
+                                            <div style="overflow:visible;" class="media-body">
+                                                <div class="row">
+                                                    <div class="ol-md-12">
+                                                        <p>
+                                                            @foreach (var m in Model.usuarios)
+                                                            {
+                                                                @if (item.UsuarioId == m.Id)
+                                                                {
+                                                                  <strong>@Html.DisplayFor(itm => item.Usuario.UserName)</strong>
+                                                                }}
+                                                            <br />
+                                                            @Html.DisplayFor(itm => item.Mensaje)<br>
+                                                            <small class="text-muted">@Html.DisplayFor(itm => item.FechPub)</small>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="list-group-item">
+                                <div class="d-flex media">
+                                    <div></div>
+                                    <div class="media-body">
+                                        <div class="d-flex media" style="overflow:visible;">
+                                            <div>
+                                            </div>
+                                            <div style="overflow:visible;" class="media-body">
+                                                <div class="row">
+                                                    <div class="ol-md-12">
+                                                        <p>
+                                                            No hay comentarios en este momento. ¡Se el primero en comentar!
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="font-monospace">Sección de comentarios</h3>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="d-flex media">
+                            <div></div>
+                            <div class="media-body">
+                                <div class="d-flex media" style="overflow:visible;">
+                                    <div>
+                                    </div>
+                                    <div style="overflow:visible;" class="media-body">
+                                        <div class="row">
+                                            <div class="ol-md-12">
+                                                <p>
+                                                    No hay comentarios en este momento. ¡Se el primero en comentar!
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+<div class="container">
+    <div class="comment-form my-5 pt-5">
+        <h3>Añadir comentarios</h3>
+        <hr class="ml-0" />
+        <hr class="s-br" />
+        <form method="post">
+            <table class="table table-borderless mt-4">
+                <tr>
+                    <td colspan="3">
+                        <textarea asp-for="Comentario.Mensaje" class="form-control" placeholder="Su comentario" required=""></textarea>
+                        <input type="hidden" asp-for="Comentario.NoticiasId" value="@ViewBag.RID" />
+                        @if (User.Identity.IsAuthenticated == true)
+                        {
+                            <input type="hidden" asp-for="Comentario.UsuarioId" value="@ViewBag.UID" />
+                        }
+                        else
+                        {
+                            <input type="hidden" asp-for="Comentario.UsuarioId" />
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <button class="btn-secondary text-uppercase ml-auto d-block" value="Comment" type="submit">Añadir comentario</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-Express_Gaming-294A5D90-590C-442C-BAEB-615B88D231B6</UserSecretsId>
+    <RootNamespace>Express_Gaming</RootNamespace>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20220309081445_ExpressTest.cs" />
+    <Compile Remove="Data\Migrations\20220309081445_ExpressTest.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220309231916_Test3.cs" />
+    <Compile Remove="Data\Migrations\20220309231916_Test3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220309232014_Test2.cs" />
+    <Compile Remove="Data\Migrations\20220309232014_Test2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220311051832_Test3.cs" />
+    <Compile Remove="Data\Migrations\20220311051832_Test3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220311223814_Test4.cs" />
+    <Compile Remove="Data\Migrations\20220311223814_Test4.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220312025454_Test5.cs" />
+    <Compile Remove="Data\Migrations\20220312025454_Test5.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LazZiya.TagHelpers" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.22" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.22" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.22" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="X.PagedList" Version="8.1.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.1.0" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

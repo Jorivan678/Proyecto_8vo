@@ -1,0 +1,75 @@
+﻿@model Express_Gaming.Models.Noticia
+
+@{
+    ViewData["Title"] = "Editar artículo - Noticia";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+<link rel="stylesheet" href="~/css/Ludens---Create-Edit-Form.css" />
+<br />
+<div class="container">
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0">Editar un artículo de Noticias</h3>
+    </div>
+    <form asp-action="Edit" enctype="multipart/form-data">
+        <input type="hidden" asp-for="NoticiaId" />
+        <div class="card shadow mb-3">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">No es obligatorio modificar todos los campos</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8 col-lg-8">
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="Titulo"><strong>Título</strong></label><input class="form-control" asp-for="Titulo" placeholder="Título">
+                            <span asp-validation-for="Titulo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <div class="mb-3 custom-file">
+                            <label class="form-label" asp-for="Img"><strong>Imagen</strong><br></label>
+                            <input class="form-control" asp-for="Foto" type="file">
+                            <input type="hidden" asp-for="Img" />
+                            <span asp-validation-for="Img" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3"><label class="form-label" asp-for="Detalle"><strong>Descripción</strong><br></label><textarea class="form-control" id="editor" asp-for="Detalle" placeholder="Descripción"></textarea></div>
+                <br />
+                <div class="mb-3"><label class="form-label" asp-for="Contenido"><strong>Contenido del artículo</strong><br></label><textarea class="form-control" id="editor" asp-for="Contenido" placeholder="Contenido"></textarea></div>
+            </div>
+        </div>
+        <input type="hidden" asp-for="UsuarioId" />
+        <div class="text-end mb-3"><button class="btn btn-primary btn-lg" type="submit">Modificar artículo</button><a class="btn btn-danger btn-lg" role="button" asp-area="Identity" asp-page="/Account/Manage/AllNoticias">Cancelar</a></div>
+    </form>
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript" src='https://cdn.jsdelivr.net/npm/froala-editor@4.0.8/js/froala_editor.pkgd.min.js'></script>
+    <script>
+        new FroalaEditor('#editor', {
+            attribution: false
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var filename = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(filename);
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="../assets/js/Ludens---Create-Edit-Form-1.js"></script>
+    <script src="../assets/js/Ludens---Create-Edit-Form-2.js"></script>
+    <script src="../assets/js/Ludens---Create-Edit-Form-3.js"></script>
+    <script src="../assets/js/Ludens---Create-Edit-Form.js"></script>
+}
+

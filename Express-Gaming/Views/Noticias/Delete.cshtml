@@ -1,0 +1,19 @@
+﻿@model Express_Gaming.Models.Noticia
+
+@{
+    ViewData["Title"] = "Eliminar el artículo " + Model.NoticiaId;
+}
+
+<br />
+<div class="container">
+    <h1>Eliminar</h1>
+
+    <h3>¿Estás seguro de querer borrar el artículo "@Model.Titulo"?</h3>
+    <div>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="NoticiaId" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-area="Identity" asp-page="/Account/Manage/AllNoticias">Back to List</a>
+        </form>
+    </div>
+</div>

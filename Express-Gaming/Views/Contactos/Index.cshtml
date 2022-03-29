@@ -1,0 +1,29 @@
+﻿@model Express_Gaming.Models.Contacto
+
+@{
+    ViewData["Title"] = "Contácto";
+}
+
+<div class="container" id="info-container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center text-info">Contáctanos</h2>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6" id="contact-box">
+            <p id="contact-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nam magnam natus tempora cumque, aliquam deleniti voluptatibus voluptas. Repellat vel, et itaque commodi iste ab, laudantium voluptas deserunt nobis. </p>
+            <div class="info-box"></div>
+            <div class="info-box"><i class="fa fa-envelope my-info-icons"></i><span class="text-uppercase text-info">Email: </span><span>correo@correo.net</span></div>
+            <div class="info-box"><i class="fa fa-phone-square my-info-icons"></i><span class="text-uppercase text-info">Teléfono: </span><span>+234000000000 </span></div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 site-form">
+            <form asp-action="Index">
+                <div class="form-group mb-3"><label class="form-label visually-hidden" asp-for="Nombre">Nombre(s)</label><input class="form-control" asp-for="Nombre" placeholder="Nombre(s)" autofocus=""></div>
+                <div class="form-group mb-3"><label class="form-label visually-hidden" asp-for="Apellido">Apellido(s)</label><input class="form-control" asp-for="Apellido" placeholder="Apellido(s)"></div>
+                <div class="form-group mb-3"><label class="form-label visually-hidden" asp-for="NumTel">Número telefónico</label><input class="form-control" type="tel" asp-for="NumTel" required="" placeholder="Número telefónico"></div>
+                <div class="form-group mb-3"><label class="form-label visually-hidden" asp-for="Correo">Dirección de correo</label><input class="form-control" type="email" asp-for="Correo" required="" placeholder="Correo"></div>
+                <div class="form-group mb-3"><label class="form-label visually-hidden" asp-for="Mensaje">Last Name</label><textarea class="form-control" asp-for="Mensaje" required="" placeholder="Mensaje" rows="8"></textarea></div><button class="btn btn-primary" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div></div>

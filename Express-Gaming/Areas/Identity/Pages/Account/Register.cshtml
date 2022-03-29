@@ -1,0 +1,39 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registrarse";
+}
+
+<section class="register-photo">
+    <div class="form-container">
+        <div class="image-holder"></div>
+        <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+            <h2 class="text-center"><strong>Crea</strong>&nbsp;una cuenta.</h2>
+            <hr />
+            <div class="mb-3">
+                <input class="form-control" asp-for="Input.UserName" placeholder="Nombre de usuario">
+                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" asp-for="Input.Email" placeholder="Correo">
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" asp-for="Input.Password" placeholder="Contraseña">
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" asp-for="Input.ConfirmPassword" placeholder="Confirmar Contraseña">
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary d-block w-100" type="submit">Registrarse</button>
+            </div>
+            <a class="already" asp-page="./Login">¿Ya tienes una cuenta? Inicia sesión aquí.</a>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,20 @@
+﻿@model Express_Gaming.Models.Review
+
+@{
+    ViewData["Title"] = "Eliminar el artículo " + Model.ReviewId;
+}
+
+<br />
+<div class="container">
+    <h1>Eliminar</h1>
+
+    <h3>¿Estás seguro de querer borrar el artículo "@Model.Titulo"?</h3>
+    <div>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="ReviewId" />
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            <a asp-area="Identity" asp-page="/Account/Manage/AllReviews">Cancelar</a>
+        </form>
+    </div>
+</div>
+

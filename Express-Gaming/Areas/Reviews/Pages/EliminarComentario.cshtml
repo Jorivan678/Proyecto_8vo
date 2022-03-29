@@ -1,0 +1,17 @@
+﻿@page
+@model Express_Gaming.Areas.Reviews.Pages.EliminarCModel
+@{
+    ViewData["Title"] = "Eliminar comentario";
+}
+
+<div class="container">
+    <br />
+    <h3>¿Está seguro de querer borrar su comentario?</h3>
+    <div>
+        <form method="post">
+            <input type="hidden" asp-for="Comentario.CoReId" />
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            <a asp-page="./Articulo" asp-route-id="@Model.Comentario.ReviewId" class="btn btn-success m-2" role="button">Cancelar</a>
+        </form>
+    </div>
+</div>

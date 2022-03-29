@@ -1,0 +1,107 @@
+﻿@page
+@model AllNoticiasModel
+@{
+    ViewData["Title"] = "Todas las Noticias";
+    ViewData["ActivePage"] = "AllNoticias";
+}
+
+<link rel="stylesheet" href="~/css/Manage-Users.css" />
+<br />
+<div class="container">
+    @if (Model.noticias.Any())
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase mb-0" id="PagingTagHelper">Administración de Noticias</h5>
+                    </div>
+                    <a asp-controller="Noticias" asp-action="Create" type="button" class="btn btn-outline-primary w-100 d-block">Crear nuevo artículo: Noticia</a>
+                    <div class="table-responsive">
+                        <table class="table no-wrap user-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border-0 text-uppercase font-medium pl-4">Identificador</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">@Html.DisplayNameFor(model => model.noticias[0].Titulo)</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">@Html.DisplayNameFor(model => model.noticias[0].FechaPub)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.noticias)
+                                {
+                                    @if (item.UsuarioId == ViewBag.UID)
+                                    {
+                                        <tr>
+                                            <td class="pl-4">@Html.DisplayFor(m => item.NoticiaId)</td>
+                                            <td>
+                                                <h5 class="font-medium mb-0">@Html.DisplayFor(m => item.Titulo)</h5>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">@Html.DisplayFor(m => item.FechaPub)</span><br>
+                                            </td>
+                                            <td>
+                                                <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" asp-controller="Noticias" asp-action="Delete" asp-route-id="@item.NoticiaId"><i class="fa fa-trash"></i></a>
+                                                <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" asp-controller="Noticias" asp-action="Edit" asp-route-id="@item.NoticiaId"><i class="fa fa-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                            <tr>
+                                                <td class="pl-4">
+                                                    No hay artículos que le pertenezcan.
+                                                </td>
+                                            </tr>
+                                    }
+                                }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container">
+            <paging total-records="Model.TotalRecords"
+                    page-no="Model.PageNo"
+                    page-size="Model.PageSize"
+                    show-page-size-nav="false">
+            </paging>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase mb-0" id="PagingTagHelper">Administración de Reviews</h5>
+                    </div>
+                    <a asp-controller="Noticias" asp-action="Create" type="button" class="btn btn-outline-primary w-100 d-block">Crear nuevo artículo: Noticia</a>
+                    <div class="table-responsive">
+                        <table class="table no-wrap user-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border-0 text-uppercase font-medium pl-4">Identificador</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">@Html.DisplayNameFor(model => model.noticias[0].Titulo)</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">@Html.DisplayNameFor(model => model.noticias[0].FechaPub)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="pl-4">
+                                        No hay artículos o no tiene artículos que le pertenezcan.
+                                    </td>
+                                </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container">
+            <nav>
+
+            </nav>
+        </div>
+    }
+</div>

@@ -1,0 +1,13 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Acceso Denegado";
+}
+
+<br />
+<div class="container">
+    <h1 class="text-danger">¡Ups! No tienes permiso para realizar esta acción.</h1>
+    <p class="text-danger">¡Vaya! Creo que te has perdido, haz click en el siguiente botón para volver a la página de inicio.</p>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-success m-2" role="button">Volver</a>
+</div>
+

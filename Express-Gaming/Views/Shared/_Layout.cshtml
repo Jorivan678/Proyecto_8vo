@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Express Gaming - @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway+Dots">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="~/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="~/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="~/css/Article-Clean.css">
+    <link rel="stylesheet" href="~/css/Black-Navbar.css">
+    <link rel="stylesheet" href="~/css/breadcrumb.css">
+    <link rel="stylesheet" href="~/css/ebs-contact-form.css">
+    <link rel="stylesheet" href="~/css/Footer-Dark.css">
+    <link rel="stylesheet" href="~/css/News-article-for-homepage-by-Ikbendiederiknl.css">
+    <link rel="stylesheet" href="~/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="~/css/Slider-laptop.css">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="~/css/Community-ChatComments.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button" style="background: rgb(34, 34, 34);border-radius: 20;border-top-left-radius: 20;border-top-right-radius: 20;border-bottom-right-radius: 20;border-bottom-left-radius: 20;border-style: none;padding-top: 0;padding-bottom: 10px;">
+            <div class="container">
+                <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div>
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        <picture><img src="~/img/LogoGaming.png" width="75"></picture>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
+                    <ul class="navbar-nav nav-right">
+                        <li class="nav-item"><a class="nav-link active" asp-controller="Home" asp-action="Index" style="color: rgba(224,217,217,0.9);">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Noticias" asp-action="Index" style="color: rgba(224,217,217,0.9);">Noticias</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Reviews" asp-action="Index" style="color: rgba(224,217,217,0.9);">Reviews</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Contactos" asp-action="Index" style="color: rgba(224,217,217,0.9);">Contácto</a></li>
+                    </ul>
+                    <p class="ms-auto navbar-text actions"> </p>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+            @RenderBody()
+    </main>
+
+    <footer class="footer-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>POSTS POPULARES</h3>
+                    <ul>
+                        <li><a href="#">Lorem ipsum</a></li>
+                        <li><a href="#">Lorem ipsum</a></li>
+                        <li><a href="#">Lorem ipsum</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>ÚLTIMOS POSTS</h3>
+                    <ul>
+                        <li><a href="#">Lorem ipsum</a></li>
+                        <li><a href="#">Lorem ipsum</a></li>
+                        <li><a href="#">Lorem ipsum</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>Sobre nosotros</h3>
+                    <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                </div>
+                <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+            </div>
+            <p class="copyright">EXPRESS GAMING © 2022</p>
+        </div>
+    </footer>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
+    <script src="~/js/Slider-laptop.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

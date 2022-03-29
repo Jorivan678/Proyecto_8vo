@@ -1,0 +1,54 @@
+﻿@model X.PagedList.IPagedList<Express_Gaming.Models.Review>
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Reviews";
+}
+
+<div style="text-align: center;">
+    <div class="row">
+        <div class="col">
+            <div style="font-size: 19px;"><i class="fa fa-home"></i><span><a asp-controller="Home" asp-action="Index" style="color: black;">&nbsp; Inicio&nbsp;</a></span><span><i class="fa fa-angle-double-right"></i></span><span><a href="#" style="color: black;">&nbsp; Reviews</a></span></div>
+        </div>
+    </div>
+</div>
+@if (Model.TotalItemCount != 0)
+{
+    <div class="container">
+        <h1 class="my-4">Revisiones más recientes</h1>
+        @foreach (var item in Model)
+        {
+            var imgPath = $"~/img/posts/{(string.IsNullOrEmpty(item.Img) ? "" : item.Img)}";
+            <div class="row">
+                <div class="col-md-7 mb-4">
+                    <div class="card h-100"><a asp-area="Reviews" asp-page="/Articulo" asp-route-id="@item.ReviewId"><img class="img-fluid" src="@imgPath" asp-append-version="true"></a></div>
+                </div>
+                <div class="col-md-5 mb-4">
+                    <div class="card border-white h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">@Html.DisplayFor(modelItem => item.Titulo)</h4>
+                            <h6 class="text-muted card-subtitle mb-2">Por: @Html.DisplayFor(modelItem => item.Usuario.UserName)</h6>
+                            <p class="card-text">@Html.Raw(item.Descripcion)</p>
+                            <p class="card-text">Calificación: @Html.DisplayFor(modelItem => item.Estrellas)</p>
+                            <a class="btn btn-primary active" role="button" asp-area="Reviews" asp-page="/Articulo" asp-route-id="@item.ReviewId">Ver Artículo<br></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+
+    <br />
+    <div class="container">
+        <nav>
+            @Html.PagedListPager(Model, page => Url.Action("Index", "Reviews", new { page, pageSize = ViewBag.PageSize }), new X.PagedList.Web.Common.PagedListRenderOptions { LiElementClasses = new string[] { "page-item" }, PageClasses = new string[] { "page-link" } })
+        </nav>
+    </div>
+}
+else
+{
+    <div class="container">
+        <h1 class="my-4">No hay artículos en este momento.</h1>
+    </div>
+}
